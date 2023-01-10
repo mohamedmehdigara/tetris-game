@@ -119,10 +119,10 @@ export const randomShape = () => {
   }
 
   // Return the default state for the game
-export const defaultState = () => {
+export const defaultState =  () =>  {
     return {
       // Create an empty grid
-      grid: gridDefault(),
+      
       // Get a new random shape
       shape: randomShape(),
       // set rotation of the shape to 0
