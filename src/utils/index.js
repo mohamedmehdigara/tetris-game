@@ -143,21 +143,7 @@ export const defaultState =  () =>  {
     }
   }
 
-  export const addBlockToGrid = (shape, grid, x, y, rotation) => {
-    // Get the block array
-    const block = shapes[shape][rotation];
-    // Copy the grid
-    const newGrid = [...grid];            
-    // Map the Block onto the grid                                                           
-    for (let row = 0; row < block.length; row++) {
-        for (let col = 0; col < block[row].length; col++) {
-            if (block[row][col]) {
-                newGrid[row + y][col + x] = shape;
-            }
-        }
-    }
-    return newGrid;
-  }
+  
 
   // Checks for completed rows and scores points
 export const checkRows = (grid) => {
