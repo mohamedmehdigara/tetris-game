@@ -4,28 +4,45 @@ import { useDispatch, useSelector } from 'react-redux'
 
 export default function Controls(props) {
     const dispatch = useDispatch()
-    const isRunning = useSelector((state) => state.isRunning)
+    const isRunning = useSelector((state) => state.game.isRunning)
+    const gameOver = useSelector((state) => state.game.gameOver)
     return (
-        <div className="controls">
+        <div className={`controls`}>
             {/* left */}
-            <button className="control-button" onClick={(e) => {
-                dispatch(moveLeft())
-            }}>Left</button>
+            <button 
+                disabled={!isRunning || gameOver}
+                className="control-button" 
+                onClick={(e) => {
+                    if (!isRunning || gameOver) { return } 
+                    dispatch(moveLeft())
+                }}>Left</button>
 
             {/* right */}
-            <button className="control-button" onClick={(e) => {
-                dispatch(moveRight())
-            }}>Right</button>
+            <button 
+                disabled={!isRunning || gameOver}
+                className="control-button" 
+                onClick={(e) => {
+                    if (!isRunning || gameOver) { return } 
+                    dispatch(moveRight())
+                }}>Right</button>
 
             {/* rotate */}
-            <button className="control-button" onClick={(e) => {
-                dispatch(rotate())
-            }}>Rotate</button>
+            <button 
+                disabled={!isRunning || gameOver}
+                className="control-button" 
+                onClick={(e) => {
+                    if (!isRunning || gameOver) { return } 
+                    dispatch(rotate())
+                }}>Rotate</button>
 
             {/* down */}
-            <button className="control-button" onClick={(e) => {
-                dispatch(moveDown())
-            }}>Down</button>
+            <button 
+                disabled={!isRunning || gameOver}
+                className="control-button" 
+                onClick={(e) => {
+                    if (!isRunning || gameOver) { return } 
+                    dispatch(moveDown())
+                }}>Down</button>
 
         </div>
     )
