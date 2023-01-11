@@ -1,12 +1,11 @@
 import React, { useEffect, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { moveDown } from '../actions'
+import { shapes } from '../utils'
+import GridSquare from "../components/GridSquare"
 
 export default function GridBoard(props) {
-  useEffect(() => {
-    requestRef.current = requestAnimationFrame(update)
-    return () => cancelAnimationFrame(requestRef.current)
-}, [isRunning])
+  
     const game = useSelector((state) => state.game)
     const { grid, shape, rotation, x, y, isRunning, speed } = game
     const requestRef = useRef()
@@ -29,6 +28,11 @@ export default function GridBoard(props) {
     }
     lastUpdateTimeRef.current = time
 } 
+
+useEffect(() => {
+  requestRef.current = requestAnimationFrame(update)
+  return () => cancelAnimationFrame(requestRef.current)
+}, [isRunning])
 
     const block = shapes[shape][rotation]
   const blockColor = shape
@@ -54,7 +58,7 @@ export default function GridBoard(props) {
               color={color} />
     })
   })
-
+  
     return (
         <div className='grid-board'>
             {gridSquares}
